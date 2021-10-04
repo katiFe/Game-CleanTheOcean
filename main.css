@@ -24,3 +24,9 @@ background-color: rgb(9, 24, 29);
 outline: 2px solid orange;
 }
 
+.plastik {
+    position: absolute;
+    background-color: magenta;
+    outline: 2px solid orange;
+}
+

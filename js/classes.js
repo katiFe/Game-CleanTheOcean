@@ -10,12 +10,11 @@ class Game {
         this.diver.create();
         this.addEventListeners();
 
-
-        const sharkArr = new Shark();
-        sharkArr.create();
-        sharkArr.draw();
-
-
+        const bag = new Bag();
+        bag.create();
+        bag.moveLeft();
+        bag.draw();
+        console.log(bag());
 
         //setting interval for obstacles to come
 
@@ -25,20 +24,39 @@ class Game {
 
 
             //add sharks
-            if( this.currentTime % 5 === 0){
+            if (this.currentTime % 5 === 0) {
                 const newShark = new Shark();
                 newShark.create();
                 this.sharkArr.push(newShark);
             }
-            
-            
 
-            //update hsar positions
+
+            //update obstacle positions
             this.sharkArr.forEach((shark) => {
                 shark.moveLeft();
                 shark.draw();
+
             })
-        }, 1000);
+
+            //remove obstacle from board
+            this.sharkArr.forEach((shark) => {
+                if (shark.x < 0) {
+                    shark.remove();   
+                    this.sharkArr.shift(); 
+                }
+            })
+
+            //obstacle collution 
+            this.sharkArr.forEach((shark) => {
+                if (shark.x === 0){
+                    if( this.diver.y < shark.y + shark.height &&
+                        this.diver.y + this.diver.height > shark.y){
+                       alert("Game Over");  
+                        }
+                }
+            })
+              
+        }, 500);
     }
 
     addEventListeners() {
@@ -51,7 +69,7 @@ class Game {
                 this.diver.moveUp();
                 this.diver.draw();
             }
-        });
+        })
 
     }
 }
@@ -111,8 +129,27 @@ class Shark extends Item {
         this.width = 10;
         this.height = 10;
         this.x = 90;
-        this.y = 50;
+        //set random point where to start obstacles
+        this.y = Math.floor(Math.random() * (90 - 0 + 1) + 0);
         this.className = "shark";
+        this.movementSpeed = 10;
+    }
+
+    moveLeft() {
+        this.x -= this.movementSpeed;
+
+    }
+}
+
+class Bag extends Item {
+    constructor() {
+        super();
+        this.width = 10;
+        this.height = 10;
+        this.x = 95;
+        //set random point where to start 
+        this.y = Math.floor(Math.random() * (90 - 0 + 1) + 0);
+        this.className = "plastik";
         this.movementSpeed = 10;
     }
 
