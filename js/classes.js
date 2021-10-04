@@ -11,9 +11,11 @@ class Game {
         this.addEventListeners();
 
 
-        const oneShark = new Shark();
-        oneShark.create();
-        oneShark.draw();
+        const sharkArr = new Shark();
+        sharkArr.create();
+        sharkArr.draw();
+
+
 
         //setting interval for obstacles to come
 
@@ -21,6 +23,17 @@ class Game {
             // timer needs to be updated
             this.currentTime++;
 
+
+            //add sharks
+            if( this.currentTime % 5 === 0){
+                const newShark = new Shark();
+                newShark.create();
+                this.sharkArr.push(newShark);
+            }
+            
+            
+
+            //update hsar positions
             this.sharkArr.forEach((shark) => {
                 shark.moveLeft();
                 shark.draw();
