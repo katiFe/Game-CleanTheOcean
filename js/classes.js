@@ -14,7 +14,7 @@ class Game {
         bag.create();
         bag.moveLeft();
         bag.draw();
-        console.log(bag());
+        
 
         //setting interval for obstacles to come
 
@@ -144,8 +144,8 @@ class Shark extends Item {
 class Bag extends Item {
     constructor() {
         super();
-        this.width = 10;
-        this.height = 10;
+        this.width = 3;
+        this.height = 3;
         this.x = 95;
         //set random point where to start 
         this.y = Math.floor(Math.random() * (90 - 0 + 1) + 0);
