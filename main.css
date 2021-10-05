@@ -1,38 +1,53 @@
 body {
-    background-color: rgb(84, 104, 133);
+    background-image: url('./pictures/bgBody.png');
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #game {
     position: relative;
     width: 80vw;
-    height: 80vh;
+    height: 90vh;
     outline: 3px solid black;
-    background-image: url("../../Pictures/Design ohne Titel.png"); 
-    background-repeat: repeat;
+    background-image: url("./pictures/bg1.png"); 
+    background-repeat: no-repeat;
     margin: 5vh auto;
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 
 .diver {
     position: absolute;
-    background-color: black;
+    background-image: url('./pictures/scuba-diver.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .shark {
 position: absolute;
-background-image: url("../../Pictures/shark.png");
+background-image: url('./pictures/shark.png');
 /* display: block; */
-background-size: contain;
+background-size: 100% 100%;
 background-repeat: no-repeat;
-margin: auto;
+/* margin: auto; */
 
 }
 
 .plastik {
     position: absolute;
-    background-color: magenta;
-    outline: 2px solid orange;
+    background-image:url('./pictures/garbage.png');
+    background-size: 100% 100%;
+    
 }
 
+.score {
+    font-family: "Audiowide", sans-serif;     
+    border-style: groove;
+    border-color: lightblue;
+    padding: 1%;
+
+    margin-right: 5%;
+
+}

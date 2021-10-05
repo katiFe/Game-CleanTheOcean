@@ -11,11 +11,6 @@ class Game {
         this.diver.create();
         this.addEventListeners();
 
-        // const bag = new Bag();
-        // bag.create();
-        // bag.moveLeft();
-        // bag.draw();
-
 
         //setting interval for obstacles to come
 
@@ -58,7 +53,7 @@ class Game {
             })
 
 
-            // create score points
+            // create score points/bags
             if (this.currentTime % 3 === 0) {
                 const newBag = new Bag();
                 newBag.create();
@@ -66,13 +61,13 @@ class Game {
 
             }
 
-            //update score points positions
+            //update score points/bags positions
             this.bagArr.forEach((bag) => {
                 bag.moveLeft();
                 bag.draw();
             })
 
-            //remove score points from board
+            //remove score points/ bags from board
             this.bagArr.forEach((bag) => {
                 if (bag.x < 0) {
                     bag.remove();
@@ -80,22 +75,40 @@ class Game {
                 }
             })
 
-            }, 500);
-        }
+            //collusion detection
+            this.bagArr.forEach((bag) => {
+                let score = 0;
+                if (bag.x === 0) {
+                    if (
+                        this.diver.y < bag.y + bag.height &&
+                        this.diver.y + this.diver.height > bag.y
+                    ) {
+                        score = score + 5;
+                    
+                        console.log(score);
+                    }
+                    console.log(score);
+                }
+            });
+
+        }, 500);
+    }
 
     addEventListeners() {
-            //linking arrow buttom up & down in order to move diver
-            document.addEventListener("keydown", (event) => {
-                if (event.key === "ArrowDown") {
-                    this.diver.moveDown();
-                    this.diver.draw();
-                } else if (event.key === "ArrowUp") {
-                    this.diver.moveUp();
-                    this.diver.draw();
-                }
-            })
+        //linking arrow buttom up & down in order to move diver
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowDown") {
+                this.diver.moveDown();
+                this.diver.draw();
+            } else if (event.key === "ArrowUp") {
+                this.diver.moveUp();
+                this.diver.draw();
+            }
+        })
 
-        }
+    }
+
+
 }
 
 
@@ -125,7 +138,7 @@ class Diver extends Item {
     constructor() {
         super();
         this.width = 10;
-        this.height = 10;
+        this.height = 17;
         this.x = 0;
         this.y = 50;
         this.movementSpeed = 3;
@@ -141,7 +154,7 @@ class Diver extends Item {
 
     moveUp() {
         //setting border //0 + 3px to be still in board
-        if (this.y > 3) {
+        if (this.y > 10) {
             this.y -= this.movementSpeed;
         }
     }
@@ -150,11 +163,11 @@ class Diver extends Item {
 class Shark extends Item {
     constructor() {
         super();
-        this.width = 10;
-        this.height = 10;
+        this.width = 20;
+        this.height = 17;
         this.x = 90;
         //set random point where to start obstacles
-        this.y = Math.floor(Math.random() * (90 - 0 + 1) + 0);
+        this.y = Math.floor(Math.random() * (85 - 10 + 1) + 10);
         this.className = "shark";
         this.movementSpeed = 10;
     }
@@ -168,11 +181,11 @@ class Shark extends Item {
 class Bag extends Item {
     constructor() {
         super();
-        this.width = 3;
-        this.height = 3;
+        this.width = 5;
+        this.height = 8;
         this.x = 90;
         //set random point where to start 
-        this.y = Math.floor(Math.random() * (90 - 0 + 1) + 0);
+        this.y = Math.floor(Math.random() * (90 - 10 + 1) + 10);
         this.className = "plastik";
         this.movementSpeed = 10;
     }
