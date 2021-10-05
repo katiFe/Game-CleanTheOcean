@@ -58,7 +58,7 @@ class Game {
             })
 
 
-            // create new points
+            // create score points
             if (this.currentTime % 3 === 0) {
                 const newBag = new Bag();
                 newBag.create();
@@ -66,10 +66,18 @@ class Game {
 
             }
 
-            //update new points positions
+            //update score points positions
             this.bagArr.forEach((bag) => {
                 bag.moveLeft();
                 bag.draw();
+            })
+
+            //remove score points from board
+            this.bagArr.forEach((bag) => {
+                if (bag.x < 0) {
+                    bag.remove();
+                    this.bagArr.shift();
+                }
             })
 
             }, 500);
