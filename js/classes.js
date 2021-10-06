@@ -4,6 +4,7 @@ class Game {
         this.diver = null;
         this.sharkArr = [];
         this.bagArr = [];
+        this.totalScore = 0;
     }
 
     startGame() {
@@ -53,8 +54,17 @@ class Game {
             })
 
 
+
+        }, 500);
+
+
+        setInterval(() => {
+            // timer needs to be updated
+            this.currentTime++;
+
+
             // create score points/bags
-            if (this.currentTime % 3 === 0) {
+            if (this.currentTime % 8 === 0) {
                 const newBag = new Bag();
                 newBag.create();
                 this.bagArr.push(newBag);
@@ -84,15 +94,17 @@ class Game {
                         this.diver.y + this.diver.height > bag.y
                     ) {
                         score = score + 5;
-                    
-                        console.log(score);
                     }
-                    console.log(score);
                 }
-            });
+            })
 
-        }, 500);
+        }, 600);
+    
+
     }
+
+
+
 
     addEventListeners() {
         //linking arrow buttom up & down in order to move diver
@@ -103,6 +115,11 @@ class Game {
             } else if (event.key === "ArrowUp") {
                 this.diver.moveUp();
                 this.diver.draw();
+            } else if (event.key === "ArrowLeft") {
+                this.diver.moveLeft();
+        
+            } else if (event.key === "ArrowRight") {
+                this.diver.moveRight();
             }
         })
 
@@ -141,7 +158,7 @@ class Diver extends Item {
         this.height = 17;
         this.x = 0;
         this.y = 50;
-        this.movementSpeed = 3;
+        this.movementSpeed = 10;
         this.className = "diver";
     }
 
@@ -156,6 +173,18 @@ class Diver extends Item {
         //setting border //0 + 3px to be still in board
         if (this.y > 10) {
             this.y -= this.movementSpeed;
+        }
+    }
+
+    moveLeft() {
+        if (this.x > 0) {
+            this.x -= this.movementSpeed;
+        }
+    }
+
+    moveRight() {
+        if (this.x < 100) {
+            this.x += this.movementSpeed;
         }
     }
 }
