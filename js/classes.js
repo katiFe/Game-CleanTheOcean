@@ -4,13 +4,16 @@ class Game {
         this.diver = null;
         this.sharkArr = [];
         this.bagArr = [];
-        this.totalScore = 0;
+        this.score = 0;
+        this.turtleArr = [];
     }
 
     startGame() {
         this.diver = new Diver();
         this.diver.create();
         this.addEventListeners();
+        let totalScore = document.getElementbyId('score');
+        totalScore.innerHTML = this.score;
 
 
         //setting interval for obstacles to come
@@ -87,19 +90,60 @@ class Game {
 
             //collusion detection
             this.bagArr.forEach((bag) => {
-                let score = 0;
                 if (bag.x === 0) {
                     if (
                         this.diver.y < bag.y + bag.height &&
-                        this.diver.y + this.diver.height > bag.y
-                    ) {
-                        score = score + 5;
+                        this.diver.y + this.diver.height > bag.y) {
+                        this.score = this.score + 1;
+                        bag.remove();
                     }
                 }
             })
 
         }, 600);
-    
+
+        setInterval(() => {
+            // timer needs to be updated
+            this.currentTime++;
+
+
+            // create score points/bags
+            if (this.currentTime % 25 === 0) {
+                const newTurtle = new Turtle();
+                newTurtle.create();
+                this.turtleArr.push(newTurtle);
+
+            }
+
+            //update score points/bags positions
+            this.turtleArr.forEach((turtle) => {
+                turtle.moveUp();
+                turtle.draw();
+            })
+
+            //remove score points/ bags from board/ 
+            this.turtleArr.forEach((turtle) => {
+                if (turtle.y < 40) {
+                    turtle.remove();
+                    this.turtleArr.shift();
+                }
+            })
+
+            //collusion detection
+            this.turtleArr.forEach((turtle) => {
+                if (turtle.x === 0) {
+                    if (
+                        this.diver.y < turtle.y + turtle.height &&
+                        this.diver.y + this.diver.height > turtle.y
+                    ) {
+                        this.score = this.score + 5;
+                        turtle.remove();
+                    }
+                }
+            })
+
+        }, 800);
+
 
     }
 
@@ -117,9 +161,11 @@ class Game {
                 this.diver.draw();
             } else if (event.key === "ArrowLeft") {
                 this.diver.moveLeft();
-        
+                this.diver.draw();
+
             } else if (event.key === "ArrowRight") {
                 this.diver.moveRight();
+                this.diver.draw();
             }
         })
 
@@ -192,9 +238,9 @@ class Diver extends Item {
 class Shark extends Item {
     constructor() {
         super();
-        this.width = 20;
-        this.height = 17;
-        this.x = 90;
+        this.width = 15;
+        this.height = 14;
+        this.x = 95;
         //set random point where to start obstacles
         this.y = Math.floor(Math.random() * (85 - 10 + 1) + 10);
         this.className = "shark";
@@ -212,7 +258,7 @@ class Bag extends Item {
         super();
         this.width = 5;
         this.height = 8;
-        this.x = 90;
+        this.x = 95;
         //set random point where to start 
         this.y = Math.floor(Math.random() * (90 - 10 + 1) + 10);
         this.className = "plastik";
@@ -225,6 +271,24 @@ class Bag extends Item {
     }
 }
 
+class Turtle extends Item {
+    constructor() {
+        super();
+        this.width = 5;
+        this.height = 8;
+        this.y = 100;
+        //set random point where to start 
+
+        this.x = Math.floor(Math.random() * (100 - this.width + 1));
+        this.className = "turtle";
+        this.movementSpeed = 10;
+    }
+
+    moveUp() {
+        this.y = this.y - 5;
+
+    }
+}
 
 
 
