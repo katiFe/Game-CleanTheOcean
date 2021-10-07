@@ -11,7 +11,7 @@ body {
     width: 80vw;
     height: 90vh;
     outline: 3px solid black;
-    background-image: url("./pictures/bg1.png"); 
+    background-image: url("./pictures/bg.png"); 
     background-repeat: no-repeat;
     margin: 5vh auto;
     background-size: 100% 100%;
@@ -21,17 +21,19 @@ body {
 .diver {
     position: absolute;
     background-image: url('./pictures/scuba-diver.png');
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
+    transition: transform 100ms linear;
 }
 
 .shark {
 position: absolute;
 background-image: url('./pictures/shark.png');
-/* display: block; */
-background-size: 100% 100%;
+width: 100%;
+background-size: cover;
 background-repeat: no-repeat;
-/* margin: auto; */
+transition: all 500ms linear;
+
 
 }
 
@@ -39,10 +41,18 @@ background-repeat: no-repeat;
     position: absolute;
     background-image:url('./pictures/garbage.png');
     background-size: 100% 100%;
+    transition: all 1s linear;
     
 }
 
-.score {
+.turtle {
+    position: absolute;
+    background-image: url('./pictures/turtle.png');
+    background-size: 100% 100%;
+    transition: all 1s linear;
+}
+
+#score {
     font-family: "Audiowide", sans-serif;     
     border-style: groove;
     border-color: lightblue;
