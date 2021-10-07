@@ -20,19 +20,20 @@ body {
 
 .diver {
     position: absolute;
-    background-image: url('./pictures/scuba-diver.png');
-    background-size: cover;
+    background-image: url('./pictures/diver.png');
+    background-size: contain;
     background-repeat: no-repeat;
-    transition: transform 100ms linear;
+    /* transition: transform 100ms linear; */
+    /* outline: 2px solid orange; */
 }
 
 .shark {
 position: absolute;
 background-image: url('./pictures/shark.png');
-width: 100%;
-background-size: cover;
+background-size: contain;
 background-repeat: no-repeat;
 transition: all 500ms linear;
+/* outline: 2px solid red; */
 
 
 }
@@ -40,8 +41,9 @@ transition: all 500ms linear;
 .plastik {
     position: absolute;
     background-image:url('./pictures/garbage.png');
-    background-size: 100% 100%;
+    background-size: contain;
     transition: all 1s linear;
+    /* outline: 2px solid red; */
     
 }
 

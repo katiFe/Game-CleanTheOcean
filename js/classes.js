@@ -40,23 +40,35 @@ class Game {
 
             //remove obstacle from board
             this.sharkArr.forEach((shark) => {
-                if (shark.x < 0) {
+                //- 4 is set because with 0 it would disappear earlier/ 
+                if (shark.x < - 4) {
                     shark.remove();
                     this.sharkArr.shift();
                 }
             })
 
-            //obstacle collution 
+            //obstacle collison 
             this.sharkArr.forEach((shark) => {
-                if (shark.x === this.diver.x) {
-                    if (this.diver.y < shark.y + shark.height &&
-                        this.diver.y + this.diver.height > shark.y) {
-                        alert("Game Over");
-                    }
+                if (this.diver.x < shark.x + shark.width &&
+                    this.diver.x + this.diver.width > shark.x &&
+                    this.diver.y < shark.y + shark.height &&
+                    this.diver.y + this.diver.height > shark.y) {
+                    console.log("____collision detected___");
+                    console.log("this.diver.x...", this.diver.x);
+                    console.log("shark.x...", shark.x);
+                    console.log("shark.width...", shark.width);
+
+                    console.log("this.diver.width...", this.diver.width);
+                    console.log("this.diver.y...", this.diver.y);
+                    console.log("shark.y...", shark.y);
+                    console.log("shark.height...", shark.height);
+                    console.log("this.diver.height...", this.diver.height);
+
+
+                    alert("Game Over");
+
                 }
             })
-
-
 
         }, 500);
 
@@ -82,7 +94,8 @@ class Game {
 
             //remove score points/ bags from board
             this.bagArr.forEach((bag) => {
-                if (bag.x < 0) {
+                //- 10 is set because with 0 it would disappear earlier
+                if (bag.x < - 5) {
                     bag.remove();
                     this.bagArr.shift();
                 }
@@ -90,13 +103,13 @@ class Game {
 
             //collusion detection
             this.bagArr.forEach((bag) => {
-                if (bag.x === 0) {
-                    if (
-                        this.diver.y < bag.y + bag.height &&
-                        this.diver.y + this.diver.height > bag.y) {
-                        this.score = this.score + 1;
-                        bag.remove();
-                    }
+                if (this.diver.x < bag.x + bag.width &&
+                    this.diver.x + this.diver.width > bag.x &&
+                    this.diver.y < bag.y + bag.height &&
+                    this.diver.y + this.diver.height > bag.y) {
+                    this.score = this.score + 1;
+                    bag.remove();
+                    console.log(this.score);
                 }
             })
 
@@ -123,7 +136,7 @@ class Game {
 
             //remove score points/ bags from board/ 
             this.turtleArr.forEach((turtle) => {
-                if (turtle.y < 40) {
+                if (turtle.y < 10) {
                     turtle.remove();
                     this.turtleArr.shift();
                 }
@@ -131,18 +144,15 @@ class Game {
 
             //collusion detection
             this.turtleArr.forEach((turtle) => {
-                if (turtle.x === 0) {
-                    if (
-                        this.diver.y < turtle.y + turtle.height &&
-                        this.diver.y + this.diver.height > turtle.y
-                    ) {
-                        this.score = this.score + 5;
-                        turtle.remove();
-                        
-                    }
+                if (this.diver.x < turtle.x + turtle.width &&
+                    this.diver.x + this.diver.width > turtle.x &&
+                    this.diver.y < turtle.y + turtle.height &&
+                    this.diver.y + this.diver.height > turtle.y) {
+                    this.score = this.score + 5;
+                    turtle.remove();
+                    console.log(this.score);
                 }
             })
-
         }, 800);
 
 
@@ -172,10 +182,7 @@ class Game {
 
     }
 
-
 }
-
-
 
 class Item {
     constructor() {
@@ -201,8 +208,8 @@ class Item {
 class Diver extends Item {
     constructor() {
         super();
-        this.width = 10;
-        this.height = 17;
+        this.width = 7;
+        this.height = 12;
         this.x = 0;
         this.y = 50;
         this.movementSpeed = 10;
@@ -239,8 +246,8 @@ class Diver extends Item {
 class Shark extends Item {
     constructor() {
         super();
-        this.width = 15;
-        this.height = 14;
+        this.width = 12;
+        this.height = 12;
         this.x = 95;
         //set random point where to start obstacles
         this.y = Math.floor(Math.random() * (85 - 10 + 1) + 10);
@@ -257,7 +264,7 @@ class Shark extends Item {
 class Bag extends Item {
     constructor() {
         super();
-        this.width = 5;
+        this.width = 4;
         this.height = 8;
         this.x = 95;
         //set random point where to start 
