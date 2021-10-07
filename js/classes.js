@@ -48,24 +48,26 @@ class Game {
             })
 
             //obstacle collison 
-            this.sharkArr.forEach((shark) => {
+            this.sharkArr.forEach((shark, indexOfSharks) => {
                 if (this.diver.x < shark.x + shark.width &&
                     this.diver.x + this.diver.width > shark.x &&
                     this.diver.y < shark.y + shark.height &&
                     this.diver.y + this.diver.height > shark.y) {
-                    console.log("____collision detected___");
-                    console.log("this.diver.x...", this.diver.x);
-                    console.log("shark.x...", shark.x);
-                    console.log("shark.width...", shark.width);
 
-                    console.log("this.diver.width...", this.diver.width);
-                    console.log("this.diver.y...", this.diver.y);
-                    console.log("shark.y...", shark.y);
-                    console.log("shark.height...", shark.height);
-                    console.log("this.diver.height...", this.diver.height);
+                    // console.log("____collision detected___");
+                    // console.log("this.diver.x...", this.diver.x);
+                    // console.log("shark.x...", shark.x);
+                    // console.log("shark.width...", shark.width);
 
-
-                    alert("Game Over");
+                    // console.log("this.diver.width...", this.diver.width);
+                    // console.log("this.diver.y...", this.diver.y);
+                    // console.log("shark.y...", shark.y);
+                    // console.log("shark.height...", shark.height);
+                    // console.log("this.diver.height...", this.diver.height);
+                    shark.remove();
+                    this.sharkArr.splice(indexOfSharks, 1);
+                    this.score = this.score - 5;
+                    // alert("Game Over");
 
                 }
             })
@@ -102,14 +104,15 @@ class Game {
             })
 
             //collusion detection
-            this.bagArr.forEach((bag) => {
+            this.bagArr.forEach((bag, indexOfBag) => {
                 if (this.diver.x < bag.x + bag.width &&
                     this.diver.x + this.diver.width > bag.x &&
                     this.diver.y < bag.y + bag.height &&
                     this.diver.y + this.diver.height > bag.y) {
                     this.score = this.score + 1;
                     bag.remove();
-                    console.log(this.score);
+                    this.bagArr.splice(indexOfBag, 1);
+                    console.log(`number of current score: ${this.score}`);
                 }
             })
 
@@ -143,18 +146,20 @@ class Game {
             })
 
             //collusion detection
-            this.turtleArr.forEach((turtle) => {
+            this.turtleArr.forEach((turtle, indexOfTurtles) => {
                 if (this.diver.x < turtle.x + turtle.width &&
                     this.diver.x + this.diver.width > turtle.x &&
                     this.diver.y < turtle.y + turtle.height &&
                     this.diver.y + this.diver.height > turtle.y) {
                     this.score = this.score + 5;
                     turtle.remove();
+                    this.turtleArr.splice(indexOfTurtles, 1);
                     console.log(this.score);
                 }
             })
         }, 800);
 
+    
 
     }
 
@@ -182,6 +187,10 @@ class Game {
 
     }
 
+    printScore() {
+        const score = document.querySelector("score span");
+
+    }
 }
 
 class Item {
