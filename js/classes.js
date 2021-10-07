@@ -12,8 +12,8 @@ class Game {
         this.diver = new Diver();
         this.diver.create();
         this.addEventListeners();
-        let totalScore = document.getElementbyId('score');
-        totalScore.innerHTML = this.score;
+        // let totalScore = document.getElementbyId('score');
+        // totalScore.innerHTML = this.score;
 
 
         //setting interval for obstacles to come
@@ -48,7 +48,7 @@ class Game {
 
             //obstacle collution 
             this.sharkArr.forEach((shark) => {
-                if (shark.x === 0) {
+                if (shark.x === this.diver.x) {
                     if (this.diver.y < shark.y + shark.height &&
                         this.diver.y + this.diver.height > shark.y) {
                         alert("Game Over");
@@ -138,6 +138,7 @@ class Game {
                     ) {
                         this.score = this.score + 5;
                         turtle.remove();
+                        
                     }
                 }
             })
