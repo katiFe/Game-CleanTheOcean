@@ -1,20 +1,53 @@
-body {
-    background-image: url('./pictures/bgBody.png');
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
 
-#game {
+body {
     position: relative;
     width: 80vw;
     height: 90vh;
     outline: 3px solid black;
-    background-image: url("./pictures/bg.png"); 
+    background-image: url("./pictures/bgImageStart.png"); 
     background-repeat: no-repeat;
     margin: 5vh auto;
+    padding: 5%;
     background-size: 100% 100%;
+}
+
+.button {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    border-style: groove;
+    border-color: white;
+    background-color: black;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    
+
+}
+
+.button :hover {
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+    border-color: black;
+    border-style: groove;
+    background-color: white;
+    position: relative;
+
+}
+
+.instructions {
+    color: white;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    padding-top: 10%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+
 }
 
 
