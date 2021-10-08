@@ -1,0 +1,60 @@
+body {
+    background-image: url('../pictures/bgBody.png');
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#game {
+    position: relative;
+    width: 80vw;
+    height: 90vh;
+    outline: 3px solid black;
+    background-image: url("../pictures/bg.png"); 
+    background-repeat: no-repeat;
+    margin: 5vh auto;
+    background-size: 100% 100%;
+}
+
+
+.diver {
+    position: absolute;
+    background-image: url('../pictures/diver.png');    
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* outline: 2px solid orange; */
+}
+
+.shark {
+position: absolute;
+background-image: url('../pictures/shark.png');
+background-size: contain;
+background-repeat: no-repeat;
+/* outline: 2px solid red; */
+
+
+}
+
+.plastik {
+    position: absolute;
+    background-image:url('../pictures/garbage.png');
+    background-size: contain;
+    
+    
+}
+
+.turtle {
+    position: absolute;
+    background-image: url('../pictures/turtle.png');
+    background-size: 100% 100%;
+}
+
+#display {
+    font-family: "Audiowide", sans-serif;     
+    border-style: groove;
+    border-color: lightblue;
+    padding: 1%;
+    margin-right: 5%;
+
+}
