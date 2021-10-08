@@ -18,5 +18,5 @@ https://katife.github.io/Game-CleanTheOcean/
 
 ## Picture/ Icon Sources
 
-Icon source: 
+Icon source: www.flaticon.com
 Picture source: www.cleanoceanproject.org
