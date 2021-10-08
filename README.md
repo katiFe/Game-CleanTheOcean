@@ -14,3 +14,9 @@ Watch out the sharks!
 ## Demo
 
 https://katife.github.io/Game-CleanTheOcean/
+
+
+## Picture/ Icon Sources
+
+Icon source: 
+Picture source: www.cleanoceanproject.org

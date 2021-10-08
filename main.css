@@ -3,7 +3,7 @@ body {
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #game {
@@ -20,10 +20,9 @@ body {
 
 .diver {
     position: absolute;
-    background-image: url('./pictures/diver.png');
+    background-image: url('./pictures/diver.png');    
     background-size: contain;
     background-repeat: no-repeat;
-    /* transition: transform 100ms linear; */
     /* outline: 2px solid orange; */
 }
 
@@ -32,7 +31,6 @@ position: absolute;
 background-image: url('./pictures/shark.png');
 background-size: contain;
 background-repeat: no-repeat;
-transition: all 500ms linear;
 /* outline: 2px solid red; */
 
 
@@ -42,8 +40,7 @@ transition: all 500ms linear;
     position: absolute;
     background-image:url('./pictures/garbage.png');
     background-size: contain;
-    transition: all 1s linear;
-    /* outline: 2px solid red; */
+    
     
 }
 
@@ -51,15 +48,13 @@ transition: all 500ms linear;
     position: absolute;
     background-image: url('./pictures/turtle.png');
     background-size: 100% 100%;
-    transition: all 1s linear;
 }
 
-#score {
+#display {
     font-family: "Audiowide", sans-serif;     
     border-style: groove;
     border-color: lightblue;
     padding: 1%;
-
     margin-right: 5%;
 
 }
