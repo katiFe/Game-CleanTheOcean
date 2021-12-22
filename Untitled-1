@@ -1,0 +1,26 @@
+
+
+- make commit & make sure it works local
+- push to gitgub (it will automatically deploy)
+- test deployed version & make sure it works
+
+___
+
+- challenge: modify your function updateScore() so that it can receive the amount of points to increase/decrease
+
+  at the moment (ex. for turtules):
+        this.score = this.score + 5;
+        this.updateScore();
+
+  expected result:
+        this.updateScore(5);
+
+  steps:
+    - modify updateScore()
+    - apply this for all collisions
+
+__
+
+- improvemnt: static page with instructions
+
+

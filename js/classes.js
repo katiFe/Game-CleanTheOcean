@@ -190,9 +190,10 @@ class Game {
         scoreElm.innerHTML = this.score;
         if (this.score === 30) {
             alert("Congrats!! You made it to the next level");
-        } else if (this.score <= 0) {
+        } else if (this.score === 0 || this.score < 0) {
             alert("Game over!");
-            console.log("this score");
+            this.startGame();
+            
         }
     }
 

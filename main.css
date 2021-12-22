@@ -4,25 +4,33 @@ body {
     width: 80vw;
     height: 90vh;
     outline: 3px solid black;
-    background-image: url("./pictures/bgImageStart.png"); 
+    background-image: url("./pictures/cover-game.jpg"); 
     background-repeat: no-repeat;
     margin: 5vh auto;
     padding: 5%;
     background-size: 100% 100%;
 }
 
+.button-center{
+    display: grid;
+    justify-content: center;
+}
+
 .button {
+    width: 9rem;
     font-size: 20px;
     color: white;
     text-decoration: none;
     border-style: groove;
-    border-color: white;
-    background-color: black;
+    border-color: rgb(127, 219, 199);
+    background-color: rgb(24, 136, 127);
     padding: 10px;
-    position: relative;
-    display: flex;
+    display: flex; 
     justify-content: center;
-    
+
+    margin-top: 15rem;
+    border-radius: 10px;
+    display: grid;
 
 }
 
