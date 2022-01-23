@@ -23,7 +23,6 @@ body {
     background-image: url('../pictures/diver.png');    
     background-size: contain;
     background-repeat: no-repeat;
-    /* outline: 2px solid orange; */
 }
 
 .shark {
@@ -31,15 +30,12 @@ position: absolute;
 background-image: url('../pictures/shark.png');
 background-size: contain;
 background-repeat: no-repeat;
-/* outline: 2px solid red; */
-
-
 }
 
 .plastik {
     position: absolute;
     background-image:url('../pictures/garbage.png');
-    background-size: contain;
+    background-size: cover;
     
     
 }

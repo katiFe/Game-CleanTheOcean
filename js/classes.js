@@ -94,10 +94,10 @@ class Game {
 
             //collusion detection plastic bags
             this.bagArr.forEach((bag, indexOfBag) => {
-                if (this.diver.x < bag.x + bag.width &&
-                    this.diver.x + this.diver.width > bag.x &&
-                    this.diver.y < bag.y + bag.height &&
-                    this.diver.y + this.diver.height > bag.y) {
+                if (this.diver.x <= bag.x + bag.width &&
+                    this.diver.x + this.diver.width >= bag.x &&
+                    this.diver.y <= bag.y + bag.height &&
+                    this.diver.y + this.diver.height >= bag.y) {
 
 
                     this.score = this.score + 1;
@@ -188,20 +188,22 @@ class Game {
 
         //store current score in the DOM
         scoreElm.innerHTML = this.score;
-        if (this.score === 30) {
-            alert("Congrats!! You made it to the next level");
-        } else if (this.score === 0 || this.score < 0) {
+        if (this.score === 17) {
+            confirm(`Congrats! You got ${this.score} score!
+    Quite ready for another dive?`); 
+      window.location.reload();
+        } else if(this.score === 0 || this.score < 0) {
             alert("Game over!");
-            this.startGame();
-            
-        }
+            window.location.reload();
+        } 
+        
     }
 
 }
 
 class Item {
     constructor() {
-        this.domElm = null;
+        // this.domElm = null;
         this.gameElm = document.getElementById("game");
     }
     create() {
@@ -281,7 +283,7 @@ class Bag extends Item {
         super();
         this.width = 4;
         this.height = 8;
-        this.x = 95;
+        this.x = 100;
 
         //set random point where to start 
         this.y = Math.floor(Math.random() * (90 - 10 + 1) + 10);
@@ -300,7 +302,7 @@ class Turtle extends Item {
         super();
         this.width = 5;
         this.height = 8;
-        this.y = 100;
+        this.y = 97;
 
 
         //set random point where to start 
